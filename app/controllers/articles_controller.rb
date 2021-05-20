@@ -22,10 +22,10 @@ class ArticlesController < ApplicationController
     if @article.save
       flash[:notice] = "Article was created successfully."
       redirect_to article_path(@article) # extracts id from article and uses it for the redirect
+      # redirect_to @article # same functionality as the line above
     else
       render "new"
     end
-    # redirect_to @article # same functionality as the line above
   end
 
   def update
@@ -36,5 +36,11 @@ class ArticlesController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path # redirects to index
   end
 end
