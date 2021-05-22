@@ -10,9 +10,7 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
+    <%= render 'layouts/messages' %> <!-- the underscore is omitted when rendering a partial -->
     <%= yield %>
   </body>
 </html>
